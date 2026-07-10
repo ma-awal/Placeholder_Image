@@ -3,29 +3,124 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Premium Portfolio Gallery</title>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f8fafc;
+        margin: 0;
+        padding: 40px 20px;
+        color: #1e293b;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+        background: linear-gradient(135deg, #4f46e5, #9333ea);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .header p {
+        color: #64748b;
+        margin-top: 10px;
+      }
+
+      /* Grid Container */
+      #gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Premium Card Style */
+      .card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        border-color: #4f46e5;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: 0.5s;
+      }
+      .card:hover img {
+        transform: scale(1.08);
+      }
+      .card-info {
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #475569;
+      }
+    </style>
   </head>
   <body>
-    <img src="/assets/vortex.png" alt="" />
-    <img src="/assets/portfolio-react.png" alt="" />
-    <img src="/assets/lumina.png" alt="" />
-    <img src="/assets/wallet-image.png" alt="" />
-    <img src="/assets/urban-style.png" alt="" />
-    <img src="/assets/tasker-app.png" alt="" />
-    <img src="/assets/ztrm.png" alt="" />
-    <img src="/assets/digital.png" alt="" />
-    <img src="/assets/urban.png" alt="" />
-    <img src="/assets/flexis.png" alt="" />
-    <img src="/assets/mare.png" alt="" />
-    <img src="/assets/aviva.png" alt="" />
-    <img src="/assets/fobly.png" alt="" />
-    <img src="/assets/crown.png" alt="" />
-    <img src="/assets/chrom.png" alt="" />
-    <img src="/assets/luxery.png" alt="" />
-    <img src="/assets/beauty.png" alt="" />
-    <img src="/assets/wellness.png" alt="" />
-    <img src="/assets/chronos.png" alt="" />
-    <img src="/assets/oree.png" alt="" />
-    <img src="/assets/nutrition.png" alt="" />
+    <div class="header">
+      <h1>Premium Project Gallery</h1>
+      <p>A collection of modern web experiences</p>
+    </div>
+
+    <!-- এই গ্রিডের ভেতরে JS ডাটা ইনজেক্ট করবে -->
+    <div id="gallery-grid"></div>
+
+    <script>
+      // ইমেজের নাম এবং পাথ এর অবজেক্ট লিস্ট
+      const projects = [
+        { name: "Vortex System", img: "vortex.png" },
+        { name: "React Portfolio", img: "portfolio-react.png" },
+        { name: "Lumina Dashboard", img: "lumina.png" },
+        { name: "Smart Wallet", img: "wallet-image.png" },
+        { name: "Urban Style", img: "urban-style.png" },
+        { name: "Tasker App", img: "tasker-app.png" },
+        { name: "ZTRM Platform", img: "ztrm.png" },
+        { name: "Digital Solutions", img: "digital.png" },
+        { name: "Urban Architecture", img: "urban.png" },
+        { name: "Flexis UI Kit", img: "flexis.png" },
+        { name: "Mare App", img: "mare.png" },
+        { name: "Aviva Portal", img: "aviva.png" },
+        { name: "Fobly Market", img: "fobly.png" },
+        { name: "Crown Estate", img: "crown.png" },
+        { name: "Chrom OS Mockup", img: "chrom.png" },
+        { name: "Luxury Goods", img: "luxery.png" },
+        { name: "Beauty Care", img: "beauty.png" },
+        { name: "Wellness Hub", img: "wellness.png" },
+        { name: "Chronos Watch", img: "chronos.png" },
+        { name: "Oree Branding", img: "oree.png" },
+        { name: "Nutrition Guide", img: "nutrition.png" },
+        { name: "Smart Mess Pro", img: "mess-app.png" },
+        { name: "Foodie Experience", img: "foodie.png" },
+        { name: "React Template", img: "react-template.png" },
+      ];
+
+      const grid = document.getElementById("gallery-grid");
+
+      // লুপ চালিয়ে কার্ড জেনারেট করা
+      projects.forEach((project) => {
+        const card = `
+          <div class="card">
+            <img src="/assets/${project.img}" alt="${project.name}" loading="lazy">
+            <div class="card-info">${project.name}</div>
+          </div>
+        `;
+        grid.innerHTML += card;
+      });
+    </script>
   </body>
 </html>
